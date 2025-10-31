@@ -9,19 +9,19 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Generate snake animation
         uses: Platane/snk@master
         with:
           github_user_name: K-Rojas05
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake.gif
+          github_user_repo: K-Rojas05/K-Rojas05
 
-      - name: Push to GitHub
+      - name: Commit and push snake files
         uses: EndBug/add-and-commit@v7
         with:
           message: "generate snake"
           add: "dist/*"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
